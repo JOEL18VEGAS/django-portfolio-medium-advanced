@@ -15,6 +15,9 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+DJANGO_SUPERUSER_USERNAME="testuser" 
+DJANGO_SUPERUSER_PASSWORD="testpass" 
+DJANGO_SUPERUSER_EMAIL="admin@admin.com" 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/

@@ -6,6 +6,12 @@ EXPOSE 8000
 # Keeps Python from generating .pyc files in the container
 ENV PYTHONDONTWRITEBYTECODE=1
 
+ENV DJANGO_SUPERUSER_EMAIL=joel18vegas@gmail.com
+
+ENV DJANGO_SUPERUSER_USERNAME=joelvegas
+
+ENV DJANGO_SUPERUSER_PASSWORD=joel123vegas
+
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
@@ -25,10 +31,12 @@ USER appuser
 
 
 
-CMD ["python", "manage.py", "collectstatic", "--noinput"]
-
 CMD ["python", "manage.py", "makemigrations" ]
 
 CMD ["python", "manage.py", "migrate" ]
+
+RUN ["python", "manage.py", "createsuperuser", "--noinput"]
+
+CMD ["python", "manage.py", "collectstatic" , "--noinput" ]
 
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "config.wsgi"]
